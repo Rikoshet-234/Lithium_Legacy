@@ -1,17 +1,25 @@
-*.ncb
+# User-specific files
 *.suo
 *.user
+
+# Visual Studio cache files
+*.cache
+
+# Visual Studio 2015+ cache and options
+.vs/
+
+# Visual C++ cache files
+*.ncb
+*.opendb
 *.sdf
 *.opensdf
-*.cache
 *.ipch
 *.db
-*.opendb
+*.aps
 
 *.xcf
 
-.vs/
-
+# Compilation results
 build*/
 code/lib/
 code/pdb/
