@@ -35,7 +35,7 @@ extern bool shared_str_initialized;
 
 #ifndef _M_AMD64
 #	ifndef __BORLANDC__
-#		pragma comment(lib,"dxerr.lib")
+		#		pragma comment(lib,"dxerr_.lib")
 #	endif
 #endif
 
@@ -253,11 +253,12 @@ LPCSTR xrDebug::error2string	(long code)
 
 #ifdef _M_AMD64
 #else
-	result				= DXGetErrorDescription	(code);
+	// #HACK: @Scht. This code used to be deprecated since 2011 (dxerr => WinSDK)
+	//result				= DXGetErrorDescription	(code, &desc_storage, 1024);
 #endif
 	if (0==result)
 	{
-		FormatMessage	(FORMAT_MESSAGE_FROM_SYSTEM,0,code,0,desc_storage,sizeof(desc_storage)-1,0);
+		FormatMessage	(FORMAT_MESSAGE_FROM_SYSTEM, 0, code, 0, desc_storage, sizeof(desc_storage)-1, 0);
 		result			= desc_storage;
 	}
 	return		result	;
@@ -704,9 +705,14 @@ LONG WINAPI UnhandledFilter	(_EXCEPTION_POINTERS *pExceptionInfo)
 //		::SetUnhandledExceptionFilter	(UnhandledFilter);	// exception handler to all "unhandled" exceptions
     }
 #else
+
+// #HACK: @Scht. : see new.h in CRT
+// # error C2375: '_set_new_handler': redefinition; different linkage
+#if 0
     typedef int		(__cdecl * _PNH)( size_t );
     _CRTIMP int		__cdecl _set_new_mode( int );
-    _CRTIMP _PNH	__cdecl _set_new_handler( _PNH );
+    _CRTIMP _PNH __cdecl _set_new_handler(_In_opt_ _PNH _NewHandler);
+#endif
 
 #ifndef USE_BUG_TRAP
 	void _terminate		()

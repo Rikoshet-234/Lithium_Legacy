@@ -1008,6 +1008,7 @@ int CLocatorAPI::file_list(FS_FileSet& dest, LPCSTR path, u32 flags, LPCSTR mask
 				}
 				if (!bOK)			continue;
 			}
+
 			std::pair<FS_FileSet::iterator,bool> pr = dest.insert(FS_File());
 
 //			xr_string fn			= entry_begin;

@@ -17,6 +17,9 @@
 #include "Stream.h"
 #include "StrStream.h"
 
+// #FIX: @Scht. : Removed this. Same defined in WinNls.
+// # warning C4005: 'HIGH_SURROGATE_START': macro redefinition
+#if 0
 /// Lower value of Unicode high-surrogate character.
 #define HIGH_SURROGATE_START   0xD800
 /// Higher value of Unicode high-surrogate character.
@@ -25,6 +28,7 @@
 #define LOW_SURROGATE_START    0xDC00
 /// Higher value of Unicode low-surrogate character.
 #define LOW_SURROGATE_END      0xDFFF
+#endif // 0
 
 /// Text encoding.
 enum TEXT_ENCODING

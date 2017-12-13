@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#include "dump_string.h"
 #ifdef	DEBUG
 std::string get_string( const Fvector& v )
 {

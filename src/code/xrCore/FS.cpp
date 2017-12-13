@@ -339,7 +339,12 @@ IReader*	IReader::open_chunk(u32 ID)
 	} else return 0;
 };
 void	IReader::close()
-{	xr_delete((IReader*)this); }
+{	
+	// #HACK: @Scht. Wrong!!!!
+	// # was: xr_delete((IReader*)this);
+	auto* self = this;
+	xr_delete(self);
+}
 
 #include "FS_impl.h"
 

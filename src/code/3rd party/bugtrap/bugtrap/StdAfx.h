@@ -20,6 +20,11 @@
 
 #define WIN32_LEAN_AND_MEAN		// Exclude rarely-used stuff from Windows headers
 
+// #HACK: @Scht. : Hide some warnings
+// # warning C4996: 'inet_addr': Use inet_pton() or InetPton()
+#define _WINSOCK_DEPRECATED_NO_WARNINGS
+// # --
+
 #include <windows.h>
 #include <windowsx.h>
 #include <tchar.h>

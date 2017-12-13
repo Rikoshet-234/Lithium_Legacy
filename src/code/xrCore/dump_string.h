@@ -1,5 +1,7 @@
+#include "stdafx.h"
 #pragma once
 #ifdef	DEBUG
+
 XRCORE_API std::string get_string( bool v );
 XRCORE_API std::string get_string( const Fvector& v );
 XRCORE_API std::string get_string( const Fmatrix& dop );

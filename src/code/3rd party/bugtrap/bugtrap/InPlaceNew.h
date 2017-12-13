@@ -14,6 +14,10 @@
 
 #pragma once
 
+// #HACK: @Scht. Fix in VS 15.3
+// # error C2084: function 'void *operator new(::size_t,void *) throw()' already has a body
+
+#if 0
 #ifndef _NEW_
 
 /**
@@ -39,3 +43,4 @@ inline void operator delete(void* ptr1, void* ptr2)
 }
 
 #endif
+#endif // 0

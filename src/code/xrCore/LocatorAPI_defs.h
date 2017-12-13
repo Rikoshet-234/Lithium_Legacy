@@ -52,10 +52,10 @@ struct XRCORE_API FS_File{
 		flSubDir= (1<<0),
 		flVFS	= (1<<1),
 	};
-	unsigned 	attrib;
-	time_t	  	time_write;
-	long     	size;
-	xr_string	name;			// low-case name
+	mutable unsigned 	attrib;
+	mutable time_t	  	time_write;
+	mutable long     	size;
+	mutable xr_string	name;			// low-case name
 	void		set			(xr_string nm, long sz, time_t modif,unsigned attr);
 public:
 				FS_File		(){}
