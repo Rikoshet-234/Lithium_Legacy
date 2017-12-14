@@ -267,7 +267,6 @@ typedef void           (ALC_APIENTRY *LPALCCAPTURESAMPLES)( ALCdevice *device, A
 #if defined(TARGET_OS_MAC) && TARGET_OS_MAC
  #pragma export off
 #endif
-
 #if defined(__cplusplus)
 }
 #endif

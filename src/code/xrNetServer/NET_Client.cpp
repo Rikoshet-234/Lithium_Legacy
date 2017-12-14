@@ -450,7 +450,7 @@ if(!psNET_direct_connect)
 	//---------------------------	
 	if (CoCreateInstanceRes != S_OK)
 	{
-		DXTRACE_ERR(tmp, CoCreateInstanceRes );
+		//DXTRACE_ERR(tmp, CoCreateInstanceRes );
 		CHK_DX(CoCreateInstanceRes );
 	}	
 	//---------------------------
@@ -649,7 +649,7 @@ if(!psNET_direct_connect)
 
 //				const char* x = DXGetErrorString9(res);
 				string1024 tmp = "";
-				DXTRACE_ERR(tmp, res);
+				//DXTRACE_ERR(tmp, res);
 #endif				
 				c_port++;
 			}
@@ -699,7 +699,7 @@ if(!psNET_direct_connect)
 #ifdef DEBUG	
 //		const char* x = DXGetErrorString9(res);
 		string1024 tmp = "";
-		DXTRACE_ERR(tmp, res);
+		//DXTRACE_ERR(tmp, res);
 #endif
 		switch (res)
 		{
@@ -877,11 +877,11 @@ HRESULT	IPureClient::net_Handler(u32 dwMessageType, PVOID pMessage)
 					PDPNMSG_CONNECT_COMPLETE pMsg = (PDPNMSG_CONNECT_COMPLETE)pMessage;
 #ifdef DEBUG
 //					const char* x = DXGetErrorString9(pMsg->hResultCode);
-					if (pMsg->hResultCode != S_OK)
-					{
-						string1024 tmp="";
-						DXTRACE_ERR(tmp, pMsg->hResultCode);
-					}					
+					//if (pMsg->hResultCode != S_OK)
+					//{
+						//string1024 tmp="";
+						//DXTRACE_ERR(tmp, pMsg->hResultCode);
+					//}					
 #endif
 					if (pMsg->dwApplicationReplyDataSize)
 					{
@@ -973,8 +973,8 @@ void	IPureClient::SendTo_LL(void* data, u32 size, u32 dwFlags, u32 dwTimeout)
 	{
 		Msg	("! ERROR: Failed to send net-packet, reason: %s",::Debug.error2string(hr));
 //		const char* x = DXGetErrorString9(hr);
-		string1024 tmp="";
-		DXTRACE_ERR(tmp, hr);
+		//string1024 tmp="";
+		//DXTRACE_ERR(tmp, hr);
 	}
 
 //	UpdateStatistic();
