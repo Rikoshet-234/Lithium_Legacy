@@ -168,6 +168,7 @@ public:
 
 	IC	SelfRef	set(T W, T X, T Y, T Z)	// don't normalize
 	{	x=X; y=Y; z=Z; w=W;			return *this; }
+
 	IC	SelfRef	set(SelfCRef Q)				// don't normalize
 	{	set(Q.w, Q.x, Q.y, Q.z);	return *this; }
 
@@ -237,7 +238,7 @@ public:
 	}
 
 	// validates numerical stability
-	IC	const BOOL	isValid(void) const 
+	IC	const BOOL	isValid(void) const
 	{
 		if ((w * w) < 0.0f)	return false;
 		if ((x * x) < 0.0f)	return false;
@@ -247,7 +248,7 @@ public:
 	}
 
 	// checks for Unit-length quanternion
-	IC	const BOOL	isUnit(void) 
+	IC	const BOOL	isUnit(void)
 	{
 		T m  =  magnitude();
 
@@ -257,7 +258,7 @@ public:
 	}
 
 	// normalizes Q to be a unit geQuaternion
-	IC	SelfRef	normalize(void) 
+	IC	SelfRef	normalize(void)
 	{
 		T	m,one_over_magnitude;
 
@@ -295,7 +296,7 @@ public:
 	}
 
 	// makes unit rotation
-	IC	SelfRef	rotationYawPitchRoll(T _x, T _y, T _z) 
+	IC	SelfRef	rotationYawPitchRoll(T _x, T _y, T _z)
 	{
 		T fSinYaw   = _sin(_x*.5f);
 		T fCosYaw   = _cos(_x*.5f);
@@ -340,7 +341,7 @@ public:
 			axis.x	= OneOverSinTheta * x;
 			axis.y	= OneOverSinTheta * y;
 			axis.z	= OneOverSinTheta * z;
-			angle	= 2.0f * atan2(s,w);
+			angle	= 2.0f * std::atan2(s,w);
 			return	true;
 		} else 	{
 			axis.x	= axis.y = axis.z = 0.0f;
@@ -417,17 +418,17 @@ public:
 	{
 		T n	 = Q.x*Q.x+Q.y*Q.y+Q.z*Q.z;
 		T r  = _sqrt(n);
-		T t  = (r>EPS_S)?atan2f(r,Q.w)/r: 0.f;
+		T t  = (r>EPS_S)?std::atan2f(r,Q.w)/r: 0.f;
 		x = t*Q.x;
 		y = t*Q.y;
 		z = t*Q.z;
-		w = .5f*_log(n+Q.w*Q.w);
+		w = .5f*std::log(n+Q.w*Q.w);
 		return *this;
 	}
 	IC	SelfRef	exp(SelfCRef Q)
 	{
 		T r  = _sqrt(Q.x*Q.x+Q.y*Q.y+Q.z*Q.z);
-		T et = expf(Q.w);
+		T et = std::exp(Q.w);
 		T s  = (r>=EPS_S)? et*_sin(r)/r: 0.f;
 		x = s*Q.x;
 		y = s*Q.y;
@@ -440,6 +441,8 @@ public:
 typedef _quaternion<float>	Fquaternion;
 typedef _quaternion<double>	Dquaternion;
 
+template struct XRCORE_API _quaternion<float>;
+template struct XRCORE_API _quaternion<double>;
 template <class T>
 BOOL	_valid			(const _quaternion<T>& s)	{ return _valid(s.x) && _valid(s.y) && _valid(s.z) && _valid(s.w);	}
 

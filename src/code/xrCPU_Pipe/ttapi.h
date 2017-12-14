@@ -7,7 +7,8 @@
 	Trivial (and dumb) Threads API
 */
 
-#define _GPA_ENABLED
+// #DISABLE: @Scht. : turned off -- no library at the moment
+//#define _GPA_ENABLED
 
 #ifdef _GPA_ENABLED
 	#include <tal.h>

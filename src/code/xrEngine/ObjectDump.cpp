@@ -3,6 +3,8 @@
 #ifdef DEBUG
 #include "ObjectDump.h"
 
+#include "../xrCore/dump_string.h"
+
 ENGINE_API std::string dbg_object_base_dump_string( const CObject *obj )
 {
 	if( !obj )

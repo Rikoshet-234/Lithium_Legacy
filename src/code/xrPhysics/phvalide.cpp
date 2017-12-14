@@ -3,6 +3,7 @@
 #include "phvalide.h"
 #include "mathutils.h"
 #include "iphysicsshellholder.h"
+
 //#include "objectdump.h"
 
 
@@ -26,6 +27,8 @@ const Fbox	&ph_boundaries()
 
 
 #ifdef	DEBUG
+#include "..\xrCore\xrDebug.h"
+#include "..\xrCore\dump_string.h"
 std::string dbg_valide_pos_string( const Fvector &pos,const Fbox &bounds, const IPhysicsShellHolder *obj, LPCSTR msg )
 {
 	return	std::string( msg ) +

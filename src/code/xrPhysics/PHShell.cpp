@@ -1038,7 +1038,14 @@ void CPHShell::SetCallbacks( )
 	struct set_bone_reference: private boost::noncopyable
 	{
 		IKinematics &K;
-		set_bone_reference( IKinematics &K_ ): K( K_ ){}
+		set_bone_reference(IKinematics &K_) : K(K_) {}
+		set_bone_reference(set_bone_reference&& other) noexcept : K(other.K) {}
+		
+		// #DISABLE: @Scht. This may be useful; all bad words about this have to be sent to Dex.
+
+		//set_bone_reference(const set_bone_reference& other1) = delete;
+		//set_bone_reference& operator=(const set_bone_reference& other1) = delete;
+
 		void operator() ( u16 id )
 		{
 			CBoneInstance &bi  = K.LL_GetBoneInstance(id);

@@ -15,9 +15,12 @@
 //#include "ai/stalker/ai_stalker.h"
 #include "GeometryBits.h"
 //#include "characterphysicssupport.h"
+
 #ifdef DEBUG
 #	include	"debug_output.h"
+#include "../xrCore/dump_string.h"
 #endif
+
 CPhysicsShell*	actor_camera_shell = NULL;
 #ifdef	DEBUG
 BOOL dbg_draw_camera_collision = FALSE;

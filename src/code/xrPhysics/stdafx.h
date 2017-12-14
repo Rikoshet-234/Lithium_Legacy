@@ -8,6 +8,7 @@
 //#include "../xrEngine/stdafx.h"
 
 #include "../xrCore/xrCore.h"
+#include "../xrCore/_quaternion.h"
 
 #include "../xrServerEntities/smart_cast.h"
 //#include "../xrEngine/pure.h"
@@ -18,8 +19,6 @@
 #include "../xrcdb/xrcdb.h"
 #include "../xrsound/sound.h"
 //#include "../xrengine/IGame_Level.h"
-
-#pragma comment( lib, "xrCore.lib"	)
 
 #include "xrPhysics.h"
 
