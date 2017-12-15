@@ -699,6 +699,8 @@ void CSkeletonX_ext::_Load_hw	(Fvisual& V, void *	_verts_)
 
 #ifdef	DEBUG
 
+#include "../../xrCore/dump_string.h"
+
 template	< typename vertex_type >
 static void verify_vertex( const vertex_type& v, const Fvisual* V, const CKinematics *Parent, u32 iBase, u32 iCount, const u16 *indices, u32 vertex_idx, u32 idx )
 {

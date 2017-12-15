@@ -76,7 +76,7 @@
     <ClCompile>
       <Optimization>Disabled</Optimization>
       <EnableFiberSafeOptimizations>true</EnableFiberSafeOptimizations>
-      <AdditionalIncludeDirectories>$(SolutionDir)3rd party\;$(SolutionDir)3rd party\luabind\;$(SolutionDir)3rd party\luajit\;$(SolutionDir)3rd party\dxsdk\Include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)3rd party\;$(SolutionDir)3rd party\NVAPI\Include\;$(SolutionDir)3rd party\boost\;$(SolutionDir)3rd party\luabind\;$(SolutionDir)3rd party\luajit\;$(SolutionDir)3rd party\dxsdk\Include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>MSAA_DX10_1;MSAA_SAMPLES=4;USE_MSAA;GBUFFER_OPTIMIZATION;USE_DX10;WIN32;DEBUG;_WINDOWS;_USRDLL;XRRENDER_R3_EXPORTS;_SECURE_SCL=0;USE_RESOURCE_DEBUGGER;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>true</MinimalRebuild>
       <ExceptionHandling>Sync</ExceptionHandling>
@@ -96,9 +96,9 @@
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>dxguid.lib;d3dcompiler.lib;d3d10.lib;d3dx10.lib;dxgi.lib;nvapi.lib;atimgpud_s_x86.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>nvapi.lib;luabind.lib;luajit.lib;dxguid.lib;d3dcompiler.lib;d3d10.lib;d3dx10.lib;dxgi.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <AdditionalLibraryDirectories>$(SolutionDir)..\_lib_\$(Platform)\$(Configuration)\;$(SolutionDir)3rd party\dxsdk\Lib\$(Platform)\</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)..\_lib_\$(Platform)\$(Configuration)\;$(SolutionDir)3rd party\dxsdk\Lib\$(Platform)\;$(SolutionDir)3rd party\nvapi\Lib\$(Platform)\</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <GenerateMapFile>false</GenerateMapFile>
       <MapFileName />
@@ -120,7 +120,7 @@
       <OmitFramePointers>true</OmitFramePointers>
       <EnableFiberSafeOptimizations>true</EnableFiberSafeOptimizations>
       <WholeProgramOptimization>true</WholeProgramOptimization>
-      <AdditionalIncludeDirectories>$(SolutionDir)3rd party\;$(SolutionDir)3rd party\luabind\;$(SolutionDir)3rd party\luajit\;$(SolutionDir)3rd party\dxsdk\Include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)3rd party\;$(SolutionDir)3rd party\NVAPI\Include\;$(SolutionDir)3rd party\boost\;$(SolutionDir)3rd party\luabind\;$(SolutionDir)3rd party\luajit\;$(SolutionDir)3rd party\dxsdk\Include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>USE_DX10;WIN32;NDEBUG;_WINDOWS;_USRDLL;XRRENDER_R3_EXPORTS;_SECURE_SCL=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <ExceptionHandling />
@@ -141,8 +141,8 @@
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>dxguid.lib;d3dcompiler.lib;d3d10.lib;d3dx10.lib;dxgi.lib;nvapi.lib;atimgpud_s_x86.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(SolutionDir)..\_lib_\$(Platform)\$(Configuration)\;$(SolutionDir)3rd party\dxsdk\Lib\$(Platform)\</AdditionalLibraryDirectories>
+      <AdditionalDependencies>nvapi.lib;luabind.lib;luajit.lib;dxguid.lib;d3dcompiler.lib;d3d10.lib;d3dx10.lib;dxgi.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)..\_lib_\$(Platform)\$(Configuration)\;$(SolutionDir)3rd party\dxsdk\Lib\$(Platform)\;$(SolutionDir)3rd party\nvapi\Lib\$(Platform)\</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <ProgramDatabaseFile>$(OutDir)$(ProjectName).pdb</ProgramDatabaseFile>
       <GenerateMapFile>false</GenerateMapFile>
@@ -167,7 +167,7 @@
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
       <OmitFramePointers>false</OmitFramePointers>
       <EnableFiberSafeOptimizations>true</EnableFiberSafeOptimizations>
-      <AdditionalIncludeDirectories>$(SolutionDir)3rd party\;$(SolutionDir)3rd party\luabind\;$(SolutionDir)3rd party\luajit\;$(SolutionDir)3rd party\dxsdk\Include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)3rd party\;$(SolutionDir)3rd party\NVAPI\Include\;$(SolutionDir)3rd party\boost\;$(SolutionDir)3rd party\luabind\;$(SolutionDir)3rd party\luajit\;$(SolutionDir)3rd party\dxsdk\Include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>USE_DX10;MIXED;WIN32;DEBUG;_WINDOWS;_USRDLL;XRRENDER_R3_EXPORTS;_SECURE_SCL=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
@@ -186,8 +186,8 @@
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>dxguid.lib;d3dcompiler.lib;d3d10.lib;d3dx10.lib;dxgi.lib;nvapi.lib;atimgpud_s_x86.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(SolutionDir)..\_lib_\$(Platform)\$(Configuration)\;$(SolutionDir)3rd party\dxsdk\Lib\$(Platform)\</AdditionalLibraryDirectories>
+      <AdditionalDependencies>nvapi.lib;luabind.lib;luajit.lib;dxguid.lib;d3dcompiler.lib;d3d10.lib;d3dx10.lib;dxgi.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)..\_lib_\$(Platform)\$(Configuration)\;$(SolutionDir)3rd party\dxsdk\Lib\$(Platform)\;$(SolutionDir)3rd party\nvapi\Lib\$(Platform)\</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <GenerateMapFile>false</GenerateMapFile>
       <MapFileName>$(OutDir)$(ProjectName).map</MapFileName>

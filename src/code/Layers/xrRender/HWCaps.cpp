@@ -5,7 +5,7 @@
 #include "hw.h"
 
 #ifndef _EDITOR
-	#include "NVAPI/nvapi.h"
+	#include "nvapi.h"
 	#include "ATI/atimgpud.h"
 #endif
 
