@@ -13,8 +13,12 @@ class CGameSpy_SAKE;
 namespace gamespy_profile
 {
 
-class awards_store : boost::noncopyable
+class awards_store
 {
+private: 
+	awards_store(const awards_store&) = delete;
+	awards_store& operator=(const awards_store&) = delete;
+
 public:
 				awards_store		(CGameSpy_Full* fullgs);
 				~awards_store		();

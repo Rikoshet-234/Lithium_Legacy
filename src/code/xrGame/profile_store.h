@@ -22,9 +22,12 @@ class awards_store;
 class best_scores_store;
 
 class profile_store : 
-	public ISheduled,
-	private boost::noncopyable
+	public ISheduled
 {
+private: 
+	profile_store(const profile_store&) = delete;
+	profile_store& operator=(const profile_store&) = delete;
+
 public:
 	explicit		profile_store			(CGameSpy_Full* fullgs_obj);
 					~profile_store			();

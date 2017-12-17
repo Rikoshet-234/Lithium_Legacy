@@ -38,8 +38,12 @@ typedef mixed_delegate<
 	suggest_nicks_cb_tag>				suggest_nicks_cb;
 
 
-class account_manager : private boost::noncopyable
+class account_manager
 {
+private: 
+	account_manager(const account_manager&) = delete;
+	account_manager& operator=(const account_manager&) = delete;
+
 public:
 	explicit	account_manager		(CGameSpy_GP* gsgp_inst);
 				~account_manager	();

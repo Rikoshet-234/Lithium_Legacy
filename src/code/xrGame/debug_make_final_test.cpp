@@ -9,13 +9,15 @@
 #include "stdafx.h"
 #include "debug_make_final.hpp"
 
-struct A : private boost::noncopyable
+struct A
 {
+private: 
+	A(const A&) = delete;
+	A& operator=(const A&) = delete;
 };
 
-struct B :
+struct B final :
 	public A,
-	private debug::make_final<B>
 {
 };
 

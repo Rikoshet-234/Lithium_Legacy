@@ -15,7 +15,11 @@
 class rat_state_base;
 class CAI_Rat;
 
-class rat_state_manager : private boost::noncopyable {
+class rat_state_manager {
+private: 
+	rat_state_manager(const rat_state_manager&) = delete;
+	rat_state_manager& operator=(const rat_state_manager&) = delete;
+
 private:
 	typedef	u32													state_id_type;
 	typedef associative_vector<state_id_type, rat_state_base*>	States;

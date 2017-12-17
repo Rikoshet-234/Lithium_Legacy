@@ -13,10 +13,12 @@
 
 namespace smart_cover {
 
-class storage: 
-	private debug::make_final<storage>, 
-	private boost::noncopyable 
+class storage final
 {
+private: 
+	storage(const storage&) = delete;
+	storage& operator=(const storage&) = delete;
+
 public:
 	typedef xr_vector<smart_cover::description*>		Descriptions;
 	typedef cover::DescriptionPtr						DescriptionPtr;

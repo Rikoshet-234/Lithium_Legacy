@@ -34,8 +34,12 @@ struct shared_str_predicate
 	}
 };
 
-class Manager :	private boost::noncopyable
+class Manager
 {
+private: 
+	Manager(const Manager&) = delete;
+	Manager& operator=(const Manager&) = delete;
+
 public:
 	typedef associative_vector<shared_str, Property*, shared_str_predicate>  Properties_type;
 

@@ -15,10 +15,12 @@ namespace smart_cover {
 
 namespace transitions {
 
-class animation_action :
-	private debug::make_final<animation_action>,
-	private boost::noncopyable 
+class animation_action final
 {
+private: 
+	animation_action(const animation_action&) = delete;
+	animation_action& operator=(const animation_action&) = delete;
+
 private:
 	Fvector									m_position;
 	shared_str								m_animation_id;

@@ -23,11 +23,13 @@ namespace smart_cover {
 class cover;
 class target_selector;
 
-class animation_planner : 
-	public CActionPlannerScript<CAI_Stalker>,
-	private boost::noncopyable,
-	private debug::make_final<animation_planner>
+class animation_planner final : 
+	public CActionPlannerScript<CAI_Stalker>
 {
+private: 
+	animation_planner(const animation_planner&) = delete;
+	animation_planner& operator=(const animation_planner&) = delete;
+
 private:
 	typedef CActionPlannerScript<CAI_Stalker> inherited;
 

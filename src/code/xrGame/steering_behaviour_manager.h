@@ -14,13 +14,18 @@
 
 class CAI_Rat;
 
+namespace steering_behaviour {
+
 // #include "../../../steering_behaviour_manager.h"
 // #include "../../../steering_behaviour_cohesion.h"
 // #include "../../../steering_behaviour_alignment.h"
-// #include "../../../steering_behaviour_separation.h"	private boost::noncopyable,
-	private debug::make_final<manager>,
-	private boost::noncopyable 
+// #include "../../../steering_behaviour_separation.h"
+class manager final
 {
+private: 
+	manager(const manager&) = delete;
+	manager& operator=(const manager&) = delete;
+
 public:
 					manager			(CAI_Rat const *object);
 					~manager		();

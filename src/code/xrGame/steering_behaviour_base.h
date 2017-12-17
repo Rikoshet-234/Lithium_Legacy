@@ -15,7 +15,11 @@ class CAI_Rat;
 
 namespace steering_behaviour {
 
-class base : private boost::noncopyable {
+class base {
+private: 
+	base(const base&) = delete;
+	base& operator=(const base&) = delete;
+
 public:
 						base		(CAI_Rat const *object);
 	virtual				~base		() {}

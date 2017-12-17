@@ -6,9 +6,12 @@
 class game_cl_CaptureTheArtefact;
 class CUIGameCTA;
 
-class	CTAGameClCaptionsManager : 
-		private boost::noncopyable
+class	CTAGameClCaptionsManager
 {
+private: 
+	CTAGameClCaptionsManager(const CTAGameClCaptionsManager&) = delete;
+	CTAGameClCaptionsManager& operator=(const CTAGameClCaptionsManager&) = delete;
+
 private:
 			bool							m_press_fire2spect_showed;
 			bool							m_press_jump2payspaw_showed;

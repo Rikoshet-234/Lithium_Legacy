@@ -18,7 +18,11 @@ namespace doors {
 class actor;
 class door;
 
-class manager : private boost::noncopyable {
+class manager {
+private: 
+	manager(const manager&) = delete;
+	manager& operator=(const manager&) = delete;
+
 public:
 				manager					( Fbox const& bounding_box );
 				~manager				( );

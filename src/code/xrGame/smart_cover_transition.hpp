@@ -19,10 +19,11 @@ namespace transitions {
 
 class animation_action;
 
-class action :
-	private debug::make_final<action>,
-	private boost::noncopyable 
+class action final
 {
+private: 
+	action(const action&) = delete;
+	action& operator=(const action&) = delete;
 
 public:
 	typedef xr_vector<animation_action *> Animations;

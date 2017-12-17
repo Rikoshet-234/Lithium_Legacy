@@ -7,7 +7,7 @@
 
 typedef fastdelegate::FastDelegate<void (ClientID const &)>	svinfo_upload_complete_cb;
 
-class server_info_uploader : boost::noncopyable
+class server_info_uploader
 {
 	enum ESvInfoUploadState
 	{
@@ -28,6 +28,10 @@ class server_info_uploader : boost::noncopyable
 	void			terminate_upload			();
 	void			execute_complete_cb			();
 	
+private: 
+	server_info_uploader(const server_info_uploader&) = delete;
+	server_info_uploader& operator=(const server_info_uploader&) = delete;
+
 public:
 	explicit		server_info_uploader		(file_transfer::server_site* file_transfers);
 					~server_info_uploader		();

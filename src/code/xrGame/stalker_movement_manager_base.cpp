@@ -38,9 +38,13 @@ extern bool show_restrictions(CRestrictedObject *object);
 const float BAD_PATH_ANGLE			= PI_DIV_2 - PI_DIV_8;
 const float BAD_PATH_DISTANCE_CHECK	= 2.f;
 
-class sight_manager_enable_guard : private boost::noncopyable {
+class sight_manager_enable_guard {
 	CSightManager&		m_manager;
 	bool				m_value;
+
+private: 
+	sight_manager_enable_guard(const sight_manager_enable_guard&) = delete;
+	sight_manager_enable_guard& operator=(const sight_manager_enable_guard&) = delete;
 
 public:
 	inline	sight_manager_enable_guard	(CSightManager& manager, bool const value) :

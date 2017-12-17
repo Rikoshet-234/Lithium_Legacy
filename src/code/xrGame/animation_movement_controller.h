@@ -9,12 +9,16 @@ class poses_blending;
 class CBlend;
 
 class animation_movement_controller : 
-	public  IBlendDestroyCallback, 
-	private boost::noncopyable
+	public  IBlendDestroyCallback
 {
 	Fmatrix&			m_pObjXForm;
 	Fmatrix				m_startObjXForm;
 	poses_blending		m_poses_blending;
+
+private: 
+	animation_movement_controller(const animation_movement_controller&) = delete;
+	animation_movement_controller& operator=(const animation_movement_controller&) = delete;
+
 public:
 	void				DBG_verify_position_not_chaged() const;
 private:

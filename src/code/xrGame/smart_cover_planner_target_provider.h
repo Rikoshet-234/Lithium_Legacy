@@ -17,9 +17,12 @@
 namespace smart_cover {
 
 class target_provider : 
-	public	CActionBase<animation_planner>,
-	private boost::noncopyable
+	public	CActionBase<animation_planner>
 {
+private: 
+	target_provider(const target_provider&) = delete;
+	target_provider& operator=(const target_provider&) = delete;
+
 private:
 	typedef CActionBase<animation_planner> inherited;
 
@@ -38,9 +41,8 @@ private:
 //	class target_idle
 ////////////////////////////////////////////////////////////////////////////
 
-class target_idle : 
+class target_idle final : 
 	public	target_provider,
-	private debug::make_final<target_idle>
 {
 private:
 	typedef target_provider inherited;
@@ -54,9 +56,8 @@ public:
 //	class target_fire
 ////////////////////////////////////////////////////////////////////////////
 
-class target_fire : 
+class target_fire final : 
 	public	target_provider,
-	private debug::make_final<target_fire>
 {
 private:
 	typedef target_provider inherited;
@@ -71,9 +72,8 @@ public:
 //	class target_fire_no_lookout
 ////////////////////////////////////////////////////////////////////////////
 
-class target_fire_no_lookout : 
+class target_fire_no_lookout final : 
 	public	target_provider,
-	private debug::make_final<target_fire_no_lookout>
 {
 private:
 	typedef target_provider inherited;

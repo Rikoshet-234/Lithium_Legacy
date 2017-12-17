@@ -725,7 +725,7 @@ luabind::object CScriptStorage::name_space(LPCSTR namespace_name)
 
 #include <boost/noncopyable.hpp>
 
-struct raii_guard : private boost::noncopyable {
+struct raii_guard {
 	int m_error_code;
 	LPCSTR const& m_error_description;
 	raii_guard	(int error_code, LPCSTR const& m_description) : m_error_code(error_code), m_error_description(m_description) {}
@@ -750,6 +750,10 @@ struct raii_guard : private boost::noncopyable {
 				Msg				( "! SCRIPT ERROR: %s", m_error_description );
 		}
 	}
+
+private: 
+	raii_guard(const raii_guard&) = delete;
+	raii_guard& operator=(const raii_guard&) = delete;
 }; // struct raii_guard
 
 bool CScriptStorage::print_output(lua_State *L, LPCSTR caScriptFileName, int iErorCode)

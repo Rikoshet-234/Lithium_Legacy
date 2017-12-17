@@ -14,7 +14,11 @@ class CAI_Stalker;
 
 namespace doors {
 
-class actor : private boost::noncopyable {
+class actor {
+private: 
+	actor(const actor&) = delete;
+	actor& operator=(const actor&) = delete;
+
 public:
 						actor			( CAI_Stalker const& object );
 	virtual				~actor			( );

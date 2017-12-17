@@ -16,11 +16,13 @@ class CAI_Rat;
 
 namespace steering_behaviour {
 
-class cohesion :
-	public base,
-	private debug::make_final<cohesion>,
-	private boost::noncopyable 
+class cohesion final :
+	public base
 {
+private: 
+	cohesion(const cohesion&) = delete;
+	cohesion& operator=(const cohesion&) = delete;
+
 public:
 						cohesion	(CAI_Rat const *object);
 	virtual	Fvector		direction	();

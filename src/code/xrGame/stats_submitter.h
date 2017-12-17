@@ -19,9 +19,12 @@ namespace gamespy_profile
 {
 
 class stats_submitter :
-	public ISheduled,
-	private boost::noncopyable
+	public ISheduled
 {
+private: 
+	stats_submitter(const stats_submitter&) = delete;
+	stats_submitter& operator=(const stats_submitter&) = delete;
+
 public:
 							stats_submitter			(CGameSpy_Full* fullgs);
 							~stats_submitter		();

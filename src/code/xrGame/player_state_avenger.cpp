@@ -22,7 +22,7 @@ void player_state_avenger::reset_game()
 
 void player_state_avenger::OnPlayerKilled(u16 killer_id, u16 target_id, u16 weapon_id, std::pair<KILL_TYPE, SPECIAL_KILL_TYPE> kill_type)
 {
-	struct need_revenge : boost::noncopyable
+	struct need_revenge
 	{
 		need_revenge					(shared_str* buff_store, u32 store_size) :
 			m_my_team_players(buff_store, store_size)
@@ -49,6 +49,10 @@ void player_state_avenger::OnPlayerKilled(u16 killer_id, u16 target_id, u16 weap
 		shared_str					m_killer_name;
 		u32							m_killer_spawn_time;
 		buffer_vector<shared_str>	m_my_team_players;
+
+	private: 
+		need_revenge(const need_revenge&) = delete;
+		need_revenge& operator=(const need_revenge&) = delete;
 	};//struct need_revenge
 
 	game_PlayerState const * tmp_local_player = m_owner->get_local_player();

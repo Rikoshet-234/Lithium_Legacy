@@ -39,9 +39,12 @@ enum UpgradeStateResult
 	result_count
 };
 
-class UpgradeBase :
-	private	boost::noncopyable
+class UpgradeBase
 {
+private: 
+	UpgradeBase(const UpgradeBase&) = delete;
+	UpgradeBase& operator=(const UpgradeBase&) = delete;
+
 public:
 							UpgradeBase();
 	virtual					~UpgradeBase();

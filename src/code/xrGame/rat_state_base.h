@@ -13,7 +13,11 @@
 
 class CAI_Rat;
 
-class rat_state_base : private boost::noncopyable {
+class rat_state_base {
+private: 
+	rat_state_base(const rat_state_base&) = delete;
+	rat_state_base& operator=(const rat_state_base&) = delete;
+
 private:
 	CAI_Rat	*m_object;
 

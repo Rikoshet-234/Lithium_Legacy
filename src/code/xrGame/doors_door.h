@@ -16,7 +16,11 @@ namespace doors {
 class actor;
 enum door_state;
 
-class door : private boost::noncopyable {
+class door {
+private: 
+	door(const door&) = delete;
+	door& operator=(const door&) = delete;
+
 public:
 						door				( CPhysicObject* object );
 						~door				( );

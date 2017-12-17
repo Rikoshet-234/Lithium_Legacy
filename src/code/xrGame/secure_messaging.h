@@ -8,8 +8,12 @@ namespace secure_messaging
 {
 
 
-class seed_generator : private boost::noncopyable
+class seed_generator
 {
+private: 
+	seed_generator(const seed_generator&) = delete;
+	seed_generator& operator=(const seed_generator&) = delete;
+
 public:
 			seed_generator	();
 			~seed_generator	();

@@ -69,7 +69,6 @@ void CIKFoot::Create		(  IKinematics	*K, LPCSTR section, u16 bones[4] )
 }
 
 struct envc :
-private boost::noncopyable,
 public SEnumVerticesCallback
 {
 	Fvector &pos;
@@ -86,6 +85,10 @@ public SEnumVerticesCallback
 		if( Fvector().sub( lpos, start_pos ).dotproduct( ax ) > Fvector().sub( pos, start_pos ).dotproduct( ax ) )
 						pos.set( lpos );
 	}
+
+private: 
+	envc(const envc&) = delete;
+	envc& operator=(const envc&) = delete;
 };
 void CIKFoot::set_toe(  u16 bones[4] )
 {

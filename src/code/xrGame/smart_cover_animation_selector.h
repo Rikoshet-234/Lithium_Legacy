@@ -24,10 +24,12 @@ namespace smart_cover {
 class action_base;
 class wait_after_exit;
 
-class animation_selector : 
-	private boost::noncopyable,
-	private debug::make_final<animation_selector>
+class animation_selector final
 {
+private: 
+	animation_selector(const animation_selector&) = delete;
+	animation_selector& operator=(const animation_selector&) = delete;
+
 private:
 	CPropertyStorage		*m_storage;
 	CAI_Stalker				*m_object;

@@ -24,9 +24,12 @@ class animation_planner;
 ////////////////////////////////////////////////////////////////////////////
 
 class action_base :
-	public CStalkerActionCombatBase,
-	private boost::noncopyable
+	public CStalkerActionCombatBase
 {
+private: 
+	action_base(const action_base&) = delete;
+	action_base& operator=(const action_base&) = delete;
+
 private:
 	typedef CStalkerActionCombatBase inherited;
 
@@ -44,9 +47,8 @@ public:
 // change_loophole
 ////////////////////////////////////////////////////////////////////////////
 
-class change_loophole :	
+class change_loophole final :	
 	public action_base,
-	private debug::make_final<change_loophole>
 {
 private:
 	typedef action_base								inherited;
@@ -64,9 +66,8 @@ public:
 // non_animated_change_loophole
 ////////////////////////////////////////////////////////////////////////////
 
-class non_animated_change_loophole:
-	public action_base,
-	private debug::make_final<non_animated_change_loophole>
+class non_animated_change_loophole final :
+	public action_base
 {
 private:
 	typedef action_base								inherited;
@@ -85,9 +86,8 @@ public:
 // exit
 ////////////////////////////////////////////////////////////////////////////
 
-class exit :
+class exit final :
 	public action_base,
-	private debug::make_final<exit>
 {
 private:
 	typedef action_base								inherited;

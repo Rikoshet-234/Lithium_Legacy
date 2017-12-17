@@ -17,9 +17,12 @@ namespace smart_cover {
 	class cover;
 
 class object : 
-	public CGameObject,
-	private boost::noncopyable
+	public CGameObject
 {
+private: 
+	object(const object&) = delete;
+	object& operator=(const object&) = delete;
+
 private:
 	typedef CGameObject	inherited;
 

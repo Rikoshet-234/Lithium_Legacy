@@ -16,11 +16,13 @@ class CAI_Rat;
 
 namespace steering_behaviour {
 
-class separation :
-	public base,
-	private debug::make_final<separation>,
-	private boost::noncopyable 
+class separation final :
+	public base
 {
+private: 
+	separation(const separation&) = delete;
+	separation& operator=(const separation&) = delete;
+
 public:
 						separation	(CAI_Rat const *object);
 	virtual	Fvector		direction	();

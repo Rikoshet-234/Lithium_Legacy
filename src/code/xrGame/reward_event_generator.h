@@ -15,8 +15,12 @@ class rewarding_state_events;
 class rewarding_event_handlers;
 class best_scores_helper;
 
-class reward_event_generator : public boost::noncopyable
+class reward_event_generator
 {
+private: 
+	reward_event_generator(const reward_event_generator&) = delete;
+	reward_event_generator& operator=(const reward_event_generator&) = delete;
+
 public:
 	explicit					reward_event_generator		(u32 const max_rewards_per_game);
 	virtual						~reward_event_generator		();

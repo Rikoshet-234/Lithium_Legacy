@@ -19,10 +19,12 @@ namespace smart_cover {
 
 class object;
 
-class loophole : 
-	private debug::make_final<loophole>, 
-	private boost::noncopyable 
+class loophole final
 {
+private: 
+	loophole(const loophole&) = delete;
+	loophole& operator=(const loophole&) = delete;
+
 private:
 	class action_predicate {
 

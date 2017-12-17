@@ -1013,8 +1013,7 @@ float	CIKLimb::get_time_to_step_begin	( const CBlend& B )	const
 		return phInfinity;
 }
 
-struct ssaved_callback :
-	private boost::noncopyable
+struct ssaved_callback
 {
 	ssaved_callback( CBoneInstance &bi ):
 		_bi					( bi						)		,
@@ -1032,6 +1031,10 @@ struct ssaved_callback :
 	const BOOL				callback_overwrite;	
 	const u32				callback_type;
 	CBoneInstance			&_bi;
+
+private: 
+	ssaved_callback(const ssaved_callback&) = delete;
+	ssaved_callback& operator=(const ssaved_callback&) = delete;
 };
 static void	_BCL get_matrix( CBoneInstance* P )
 {

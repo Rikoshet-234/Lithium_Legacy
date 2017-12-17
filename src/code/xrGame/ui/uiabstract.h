@@ -38,8 +38,12 @@ enum EWindowAlignment{
 	waCenter	=16
 };
 
-class CUISimpleWindow : public boost::noncopyable
+class CUISimpleWindow
 {
+private: 
+	CUISimpleWindow(const CUISimpleWindow&) = delete;
+	CUISimpleWindow& operator=(const CUISimpleWindow&) = delete;
+
 public:
 							CUISimpleWindow		()											{m_alignment=waNone; m_wndPos.set(0,0); m_wndSize.set(0,0);}
 	virtual void			SetWndPos			(const Fvector2& pos)						{m_wndPos.set(pos.x,pos.y);}

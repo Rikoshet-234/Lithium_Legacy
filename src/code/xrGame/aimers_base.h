@@ -18,8 +18,12 @@ class IKinematicsAnimated;
 
 namespace aimers {
 
-class base : private boost::noncopyable
+class base
 {
+private: 
+	base(const base&) = delete;
+	base& operator=(const base&) = delete;
+
 public:
 							base			(
 								CGameObject* object,

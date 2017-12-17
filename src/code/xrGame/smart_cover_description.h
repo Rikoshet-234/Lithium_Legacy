@@ -22,11 +22,13 @@ namespace transitions {
 	class action;
 }
 
-class description : 
-	private debug::make_final<description>, 
-	private boost::noncopyable, 
+class description final : 
 	public  detail::intrusive_base_time
 {
+private: 
+	description(const description&) = delete;
+	description& operator=(const description&) = delete;
+
 public:
 	typedef xr_vector<loophole*>	Loopholes;
 	typedef smart_cover::transitions::action		Action;

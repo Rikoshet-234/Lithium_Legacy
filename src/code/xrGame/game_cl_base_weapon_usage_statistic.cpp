@@ -12,9 +12,14 @@
 #include "game_cl_mp.h"
 #include <boost/noncopyable.hpp>
 
-class statistic_sync_quard : private boost::noncopyable
+class statistic_sync_quard
 {
 	xrCriticalSection & m_mutex;
+
+private: 
+	statistic_sync_quard(const statistic_sync_quard&) = delete;
+	statistic_sync_quard& operator=(const statistic_sync_quard&) = delete;
+
 public:
 	statistic_sync_quard(xrCriticalSection & mutex) :
 		m_mutex(mutex)

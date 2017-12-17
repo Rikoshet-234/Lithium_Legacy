@@ -26,11 +26,13 @@ struct loophole_data {
 	u32							m_level_vertex_id;
 };
 
-class cover : 
-	public  CCoverPoint,
-	private debug::make_final<cover>, 
-	private boost::noncopyable 
+class cover final : 
+	public  CCoverPoint
 {
+private: 
+	cover(const cover&) = delete;
+	cover& operator=(const cover&) = delete;
+
 public:
 	typedef intrusive_ptr<
 				smart_cover::description,

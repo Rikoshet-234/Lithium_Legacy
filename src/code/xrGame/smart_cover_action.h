@@ -17,10 +17,12 @@
 
 namespace smart_cover{
 
-class action :
-	private debug::make_final<action>,
-	private boost::noncopyable
+class action final
 {
+private: 
+	action(const action&) = delete;
+	action& operator=(const action&) = delete;
+
 private:
 	class animation_predicate {
 

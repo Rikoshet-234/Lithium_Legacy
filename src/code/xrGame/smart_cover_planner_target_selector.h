@@ -18,11 +18,13 @@ namespace smart_cover {
 
 class animation_planner;
 
-class target_selector : 
-	public CActionPlannerAction<animation_planner>,
-	private boost::noncopyable,
-	private debug::make_final<target_selector>
+class target_selector final : 
+	public CActionPlannerAction<animation_planner>
 {
+private: 
+	target_selector(const target_selector&) = delete;
+	target_selector& operator=(const target_selector&) = delete;
+
 private:
 	typedef CActionPlannerAction<animation_planner> inherited;
 	

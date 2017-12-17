@@ -23,9 +23,12 @@ namespace luabind {
 } // namespace luabind
 
 class lua_studio_engine :
-	public cs::lua_studio::engine,
-	private boost::noncopyable
+	public cs::lua_studio::engine
 {
+private: 
+	lua_studio_engine(const lua_studio_engine&) = delete;
+	lua_studio_engine& operator=(const lua_studio_engine&) = delete;
+
 public:
 	virtual	int				CS_LUA_STUDIO_BACKEND_CALL	luaL_loadstring				(lua_State *L, const char *s);
 	virtual	int				CS_LUA_STUDIO_BACKEND_CALL	luaL_newmetatable			(lua_State *L, const char *tname);

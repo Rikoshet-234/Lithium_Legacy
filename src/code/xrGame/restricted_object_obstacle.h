@@ -13,7 +13,11 @@
 
 class obstacles_query;
 
-class CRestrictedObjectObstacle : public CRestrictedObject, private boost::noncopyable {
+class CRestrictedObjectObstacle : public CRestrictedObject {
+private: 
+	CRestrictedObjectObstacle(const CRestrictedObjectObstacle&) = delete;
+	CRestrictedObjectObstacle& operator=(const CRestrictedObjectObstacle&) = delete;
+
 private:
 	typedef CRestrictedObject	inherited;
 
