@@ -22,7 +22,7 @@ namespace transitions {
 	class action;
 }
 
-class description final : 
+class description : 
 	public  detail::intrusive_base_time
 {
 private: 

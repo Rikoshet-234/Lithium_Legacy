@@ -19,7 +19,7 @@ namespace smart_cover {
 
 class object;
 
-class loophole final
+class loophole
 {
 private: 
 	loophole(const loophole&) = delete;

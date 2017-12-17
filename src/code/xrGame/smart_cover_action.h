@@ -17,7 +17,7 @@
 
 namespace smart_cover{
 
-class action final
+class action
 {
 private: 
 	action(const action&) = delete;

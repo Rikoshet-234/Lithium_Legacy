@@ -15,7 +15,7 @@ namespace smart_cover {
 
 namespace transitions {
 
-class animation_action final
+class animation_action
 {
 private: 
 	animation_action(const animation_action&) = delete;

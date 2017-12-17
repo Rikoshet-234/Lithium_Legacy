@@ -42,7 +42,7 @@ private:
 ////////////////////////////////////////////////////////////////////////////
 
 class target_idle final : 
-	public	target_provider,
+	public	target_provider
 {
 private:
 	typedef target_provider inherited;
@@ -57,7 +57,7 @@ public:
 ////////////////////////////////////////////////////////////////////////////
 
 class target_fire final : 
-	public	target_provider,
+	public	target_provider
 {
 private:
 	typedef target_provider inherited;
@@ -73,7 +73,7 @@ public:
 ////////////////////////////////////////////////////////////////////////////
 
 class target_fire_no_lookout final : 
-	public	target_provider,
+	public	target_provider
 {
 private:
 	typedef target_provider inherited;

@@ -13,7 +13,7 @@
 
 namespace smart_cover {
 
-class storage final
+class storage
 {
 private: 
 	storage(const storage&) = delete;
@@ -29,8 +29,7 @@ private:
 public:
 							storage();
 							~storage();
-							storage(const storage&) = default;
-							storage& operator=(const storage&) = default;
+
 
 			DescriptionPtr	description		(shared_str const &table_id);
 			void			collect_garbage	();

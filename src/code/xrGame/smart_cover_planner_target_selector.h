@@ -18,7 +18,7 @@ namespace smart_cover {
 
 class animation_planner;
 
-class target_selector final : 
+class target_selector : 
 	public CActionPlannerAction<animation_planner>
 {
 private: 

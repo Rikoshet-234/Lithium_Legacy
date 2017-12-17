@@ -483,7 +483,7 @@ static void save_blends( buffer_vector<sblend_save>& buffer, IKinematicsAnimated
 		}
 	private: 
 		scbl(const scbl&) = delete;
-		scbl& operator=(const scbl&) delete;
+		scbl& operator=(const scbl&) = delete;
 	} cbl( buffer );
 	KA.LL_IterateBlends( cbl );
 }

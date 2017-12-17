@@ -48,7 +48,7 @@ public:
 ////////////////////////////////////////////////////////////////////////////
 
 class change_loophole final :	
-	public action_base,
+	public action_base
 {
 private:
 	typedef action_base								inherited;
@@ -87,7 +87,7 @@ public:
 ////////////////////////////////////////////////////////////////////////////
 
 class exit final :
-	public action_base,
+	public action_base
 {
 private:
 	typedef action_base								inherited;
