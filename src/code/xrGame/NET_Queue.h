@@ -14,7 +14,7 @@ public:
 	u16					destination;
 	xr_vector<u8>		data;
 public:
-	void				import		(NET_Packet& P)
+	void				_import		(NET_Packet& P)
 	{
 		data.clear		();
 		P.r_begin		(ID			);	//VERIFY(M_EVENT==ID);
@@ -51,7 +51,7 @@ public:
 			P.r				(&*data.begin(),size);
 		}
 	}
-	void				export		(NET_Packet& P)
+	void				_export		(NET_Packet& P)
 	{
 		u16	ID			=	M_EVENT;
 		P.w_begin		(ID			);
@@ -81,7 +81,7 @@ public:
 	IC void				insert		(NET_Packet& P)
 	{
 		NET_Event		E;
-		E.import		(P);
+		E._import		(P);
 //		queue.insert	(E);
 		queue.push_back	(E);
 		/*

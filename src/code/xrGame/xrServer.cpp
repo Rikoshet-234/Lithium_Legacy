@@ -20,7 +20,7 @@
 #include "file_transfer.h"
 #include "screenshot_server.h"
 #include "xrServer_info.h"
-#include "stl/_function.h"
+//#include "stl/_function.h"
 
 #pragma warning(push)
 #pragma warning(disable:4995)

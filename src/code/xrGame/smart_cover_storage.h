@@ -13,7 +13,7 @@
 
 namespace smart_cover {
 
-class storage : 
+class storage: 
 	private debug::make_final<storage>, 
 	private boost::noncopyable 
 {
@@ -25,7 +25,11 @@ private:
 	Descriptions	m_descriptions;
 
 public:
-							~storage		();
+							storage();
+							~storage();
+							storage(const storage&) = default;
+							storage& operator=(const storage&) = default;
+
 			DescriptionPtr	description		(shared_str const &table_id);
 			void			collect_garbage	();
 };

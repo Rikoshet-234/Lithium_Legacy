@@ -18,6 +18,8 @@
 #include "../PHDebug.h"
 #endif
 
+#include "../xrCore/dump_string.h"
+
 
 extern int	ik_allign_free_foot;
 
