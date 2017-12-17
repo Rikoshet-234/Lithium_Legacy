@@ -8,15 +8,15 @@
 //     purpose is hereby granted without fee, provided that the above copyright 
 //     notice appear in all copies and that both that copyright notice and this 
 //     permission notice appear in supporting documentation.
-// The author or Addison-Wesley Longman make no representations about the 
+// The author or Addison-Welsey Longman make no representations about the 
 //     suitability of this software for any purpose. It is provided "as is" 
 //     without express or implied warranty.
 ////////////////////////////////////////////////////////////////////////////////
-#ifndef LOKI_NULLTYPE_INC_
-#define LOKI_NULLTYPE_INC_
 
-// $Id: NullType.h 751 2006-10-17 19:50:37Z syntheticpp $
+// Last update: May 19, 2002
 
+#ifndef NULLTYPE_INC_
+#define NULLTYPE_INC_
 
 namespace Loki
 {
@@ -26,9 +26,19 @@ namespace Loki
 // Useful as an end marker in typelists 
 ////////////////////////////////////////////////////////////////////////////////
 
-    class NullType {};
-    
-}   // namespace Loki
+    class NullType 
+    {
+    public:
+        struct Head { private: Head(); };
+        struct Tail { private: Tail(); };
+    };
+}
 
+///////////////////////////////////////////////////////////////////////////////
+// Change log:
+// June 20, 2001: ported by Nick Thurn to gcc 2.95.3. Kudos, Nick!!!
+// May  10, 2002: ported by Rani Sharoni to VC7 (RTM - 9466)
+////////////////////////////////////////////////////////////////////////////////
 
-#endif // end file guardian
+#endif // NULLTYPE_INC_
+

@@ -576,40 +576,11 @@ void CUIGameCTA::SetPlayerItemsToBuyMenu()
 		);
 		TryToDefuseAllWeapons(add_ammo);
 
-		u16 ISlot = actor->inventory().FirstSlot();
-		u16 ESlot = actor->inventory().LastSlot();
+		for (auto& slot : actor->inventory().m_slots) BuyMenuItemInserter(slot);
+		for (auto& item : actor->inventory().m_belt) BuyMenuItemInserter(item);
+		for (auto& item : actor->inventory().m_ruck) BuyMenuItemInserter(item);
+		for (auto& ammo_item : add_ammo) AdditionalAmmoInserter(ammo_item);
 
-		for( ; ISlot<=ESlot; ++ISlot)
-			BuyMenuItemInserter(actor->inventory().ItemFromSlot(ISlot));
-
-		std::for_each(
-			actor->inventory().m_belt.begin(),
-			actor->inventory().m_belt.end(),
-			std::bind1st(
-				std::mem_fun<void, CUIGameCTA, PIItem const &>(
-					&CUIGameCTA::BuyMenuItemInserter
-				),
-				this
-			)
-		);
-		std::for_each(
-			actor->inventory().m_ruck.begin(),
-			actor->inventory().m_ruck.end(),
-			std::bind1st(
-				std::mem_fun<void, CUIGameCTA, PIItem const &>(
-					&CUIGameCTA::BuyMenuItemInserter
-				),
-				this
-			)
-		);
-		std::for_each(add_ammo.begin(), add_ammo.end(),
-			std::bind1st(
-				std::mem_fun<void, CUIGameCTA, aditional_ammo_t::value_type const &>(
-					&CUIGameCTA::AdditionalAmmoInserter
-				), 
-				this
-			)
-		);
 	} else
 	{
 		SetPlayerDefItemsToBuyMenu();

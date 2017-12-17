@@ -12,14 +12,14 @@
 //     suitability of this software for any purpose. It is provided "as is" 
 //     without express or implied warranty.
 ////////////////////////////////////////////////////////////////////////////////
-#ifndef LOKI_TYPEMANIP_INC_
-#define LOKI_TYPEMANIP_INC_
 
-// $Id: TypeManip.h 749 2006-10-17 19:49:26Z syntheticpp $
+// Last update: May 19, 2002
 
+#ifndef TYPEMANIP_INC_
+#define TYPEMANIP_INC_
 
 namespace Loki
-{
+{    
 ////////////////////////////////////////////////////////////////////////////////
 // class template Int2Type
 // Converts each integral constant into a unique type
@@ -42,8 +42,9 @@ namespace Loki
 
     template <typename T>
     struct Type2Type
-    {
+    {   
         typedef T OriginalType;
+        Type2Type(){} // VC7
     };
     
 ////////////////////////////////////////////////////////////////////////////////
@@ -59,18 +60,24 @@ namespace Loki
     template <bool flag, typename T, typename U>
     struct Select
     {
-        typedef T Result;
-    };
-    template <typename T, typename U>
-    struct Select<false, T, U>
-    {
-        typedef U Result;
+    private:
+        template<bool>
+        struct In 
+        { typedef T Result; };
+
+        template<>
+        struct In<false>
+        { typedef U Result; };
+
+    public:
+        typedef typename In<flag>::Result Result;
     };
     
+
 ////////////////////////////////////////////////////////////////////////////////
 // class template IsSameType
 // Return true iff two given types are the same
-// Invocation: SameType<T, U>::value
+// Invocation: IsSameType<T, U>::value
 // where:
 // T and U are types
 // Result evaluates to true iff U == T (types equal)
@@ -79,31 +86,69 @@ namespace Loki
     template <typename T, typename U>
     struct IsSameType
     {
-        enum { value = false };
+    private:
+        template<typename>
+        struct In 
+        { enum { value = false }; };
+
+        template<>
+        struct In<T>
+        { enum { value = true };  };
+
+    public:
+        enum { value = In<U>::value };
     };
     
-    template <typename T>
-    struct IsSameType<T,T>
-    {
-        enum { value = true };
-    };
-
 ////////////////////////////////////////////////////////////////////////////////
 // Helper types Small and Big - guarantee that sizeof(Small) < sizeof(Big)
 ////////////////////////////////////////////////////////////////////////////////
 
     namespace Private
     {
-        template <class T, class U>
-        struct ConversionHelper
+        typedef char Small;
+        class Big { char dummy[2]; };
+
+        template<typename T>
+        struct IsVoid
         {
-            typedef char Small;
-            struct Big { char dummy[2]; };
-            static Big   Test(...);
-            static Small Test(U);
-            static T MakeT();
+            enum { result = 
+                IsSameType<T, void>::value          ||
+                IsSameType<T, const void>::value    ||
+                IsSameType<T, volatile void>::value ||
+                IsSameType<T, const volatile void>::value
+            };
         };
     }
+
+//
+// is one type convertable to another?
+//
+    template <class T, class U>
+    class is_convertible
+    {
+        struct VoidReplace {};
+
+        typedef typename Select
+        <
+            Private::IsVoid<T>::result,
+            VoidReplace, T
+        >
+        ::Result T1;
+
+        typedef typename Select
+        <
+            Private::IsVoid<U>::result,
+            VoidReplace, U
+        >
+        ::Result U1;
+
+        static Private::Big   Test(...);
+        static Private::Small Test(U1);
+        static T1 MakeT();
+
+    public:       
+        enum { exists = sizeof(Test(MakeT())) == sizeof(Private::Small) };
+    };
 
 ////////////////////////////////////////////////////////////////////////////////
 // class template Conversion
@@ -124,39 +169,9 @@ namespace Loki
     template <class T, class U>
     struct Conversion
     {
-        typedef Private::ConversionHelper<T, U> H;
-#ifndef __MWERKS__
-        enum { exists = sizeof(typename H::Small) == sizeof((H::Test(H::MakeT()))) };
-#else
-        enum { exists = false };
-#endif
-        enum { exists2Way = exists && Conversion<U, T>::exists };
-        enum { sameType = false };
-    };
-    
-    template <class T>
-    struct Conversion<T, T>    
-    {
-        enum { exists = 1, exists2Way = 1, sameType = 1 };
-    };
-    
-    template <class T>
-    struct Conversion<void, T>    
-    {
-        enum { exists = 0, exists2Way = 0, sameType = 0 };
-    };
-    
-    template <class T>
-    struct Conversion<T, void>    
-    {
-        enum { exists = 0, exists2Way = 0, sameType = 0 };
-    };
-    
-    template <>
-    struct Conversion<void, void>    
-    {
-    public:
-        enum { exists = 1, exists2Way = 1, sameType = 1 };
+        enum { exists = (is_convertible<T,U>::exists) };
+        enum { exists2Way = (exists && is_convertible<U, T>::exists) };
+        enum { sameType = (IsSameType<T, U>::value) };
     };
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -171,37 +186,8 @@ namespace Loki
 template <class T, class U>
 struct SuperSubclass
 {
-    enum { value = (::Loki::Conversion<const volatile U*, const volatile T*>::exists &&
+  enum { value = (::Loki::Conversion<const volatile U*, const volatile T*>::exists &&
                   !::Loki::Conversion<const volatile T*, const volatile void*>::sameType) };
-      
-    // Dummy enum to make sure that both classes are fully defined.
-    enum{ dontUseWithIncompleteTypes = ( sizeof (T) == sizeof (U) ) };
-};
-
-template <>
-struct SuperSubclass<void, void> 
-{
-    enum { value = false };
-};
-
-template <class U>
-struct SuperSubclass<void, U> 
-{
-    enum { value = (::Loki::Conversion<const volatile U*, const volatile void*>::exists &&
-                  !::Loki::Conversion<const volatile void*, const volatile void*>::sameType) };
-      
-    // Dummy enum to make sure that both classes are fully defined.
-    enum{ dontUseWithIncompleteTypes = ( 0 == sizeof (U) ) };
-};
-
-template <class T>
-struct SuperSubclass<T, void> 
-{
-    enum { value = (::Loki::Conversion<const volatile void*, const volatile T*>::exists &&
-                  !::Loki::Conversion<const volatile T*, const volatile void*>::sameType) };
-      
-    // Dummy enum to make sure that both classes are fully defined.
-    enum{ dontUseWithIncompleteTypes = ( sizeof (T) == 0 ) };
 };
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -215,42 +201,10 @@ struct SuperSubclass<T, void>
 template<class T,class U>
 struct SuperSubclassStrict
 {
-    enum { value = (::Loki::Conversion<const volatile U*, const volatile T*>::exists &&
+  enum { value = (::Loki::Conversion<const volatile U*, const volatile T*>::exists &&
                  !::Loki::Conversion<const volatile T*, const volatile void*>::sameType &&
                  !::Loki::Conversion<const volatile T*, const volatile U*>::sameType) };
-    
-    // Dummy enum to make sure that both classes are fully defined.
-    enum{ dontUseWithIncompleteTypes = ( sizeof (T) == sizeof (U) ) };
 };
-
-template<>
-struct SuperSubclassStrict<void, void> 
-{
-    enum { value = false };
-};
-
-template<class U>
-struct SuperSubclassStrict<void, U> 
-{
-    enum { value = (::Loki::Conversion<const volatile U*, const volatile void*>::exists &&
-                 !::Loki::Conversion<const volatile void*, const volatile void*>::sameType &&
-                 !::Loki::Conversion<const volatile void*, const volatile U*>::sameType) };
-    
-    // Dummy enum to make sure that both classes are fully defined.
-    enum{ dontUseWithIncompleteTypes = ( 0 == sizeof (U) ) };
-};
-
-template<class T>
-struct SuperSubclassStrict<T, void> 
-{
-    enum { value = (::Loki::Conversion<const volatile void*, const volatile T*>::exists &&
-                 !::Loki::Conversion<const volatile T*, const volatile void*>::sameType &&
-                 !::Loki::Conversion<const volatile T*, const volatile void*>::sameType) };
-    
-    // Dummy enum to make sure that both classes are fully defined.
-    enum{ dontUseWithIncompleteTypes = ( sizeof (T) == 0 ) };
-};
-
 
 }   // namespace Loki
 
@@ -264,7 +218,7 @@ struct SuperSubclassStrict<T, void>
 // Deprecated: Use SuperSubclass class template instead.
 ////////////////////////////////////////////////////////////////////////////////
 
-#define LOKI_SUPERSUBCLASS(T, U) \
+#define SUPERSUBCLASS(T, U) \
     ::Loki::SuperSubclass<T,U>::value
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -276,9 +230,16 @@ struct SuperSubclassStrict<T, void>
 // Deprecated: Use SuperSubclassStrict class template instead.
 ////////////////////////////////////////////////////////////////////////////////
 
-#define LOKI_SUPERSUBCLASS_STRICT(T, U) \
+#define SUPERSUBCLASS_STRICT(T, U) \
     ::Loki::SuperSubclassStrict<T,U>::value
 
+////////////////////////////////////////////////////////////////////////////////
+// Change log:
+// June    20, 2001: ported by Nick Thurn to gcc 2.95.3. Kudos, Nick!!!
+// May     10, 2002: ported by Rani Sharoni to VC7 (RTM - 9466)
+// October 10, 2002: Commented IsSameType template (not a Loki-template - yet). MKH
+// October 12, 2002: Added SuperSubclass and SuperSubclassStrict templates.
+//                   The corresponding macros are deprecated. T.S.
+////////////////////////////////////////////////////////////////////////////////
 
-#endif // end file guardian
-
+#endif // TYPEMANIP_INC_

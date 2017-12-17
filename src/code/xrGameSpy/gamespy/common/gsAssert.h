@@ -76,7 +76,9 @@ void gsDebugAssertCallbackSet(gsDebugAssertCallback theCallback);
 
 // This is like an assert, but test at compile, not run time.
 // ex use STATIC_CHECK(DIM(array) == enumArrayCount)
-#define GS_STATIC_CHECK(expr, msg)    { CompileTimeError<((expr) != 0)> ERROR_##msg; (void)ERROR_##msg; } 
+
+// #REMOVE: @Scht. unused:
+//#define GS_STATIC_CHECK(expr, msg) static_assert(expr, #msg)
 
 
 #if defined(__LANGUAGE_C_PLUS_PLUS)||defined(__cplusplus)||defined(c_plusplus)

@@ -30,13 +30,9 @@ struct CEdgePath {
 	};
 
 	template <template <typename _T> class _vertex> 
-	class CDataStorage : public CVertexPath<bEuclidianHeuristics>::CDataStorage<DataStorageEdgePath<_vertex>::_vertex> {
+	class CDataStorage : public CVertexPath<bEuclidianHeuristics>::template CDataStorage<DataStorageEdgePath<_vertex>::_vertex> {
 	public:
-		typedef typename CVertexPath<
-			bEuclidianHeuristics
-			>::CDataStorage<
-				DataStorageEdgePath<_vertex>::_vertex
-			>											inherited;
+		typedef typename CVertexPath<bEuclidianHeuristics>::template CDataStorage<DataStorageEdgePath<_vertex>::_vertex> inherited;
 		typedef typename inherited::CGraphVertex		CGraphVertex;
 		typedef	typename CGraphVertex::_index_type		_index_type;
 	
