@@ -17,10 +17,11 @@ namespace smart_cover {
 
 class animation_planner;
 
-class default_behaviour_planner : 
-	public CActionPlannerAction<animation_planner>,
-	private boost::noncopyable,
-	private debug::make_final<default_behaviour_planner>
+class default_behaviour_planner final : 
+	public CActionPlannerAction<animation_planner>
+	//,
+	//private boost::noncopyable,
+	//private debug::make_final<default_behaviour_planner>
 {
 private:
 	typedef CActionPlannerAction<animation_planner>	inherited;
@@ -28,6 +29,9 @@ private:
 private:
 				void		add_evaluators				();
 				void		add_actions					();
+
+				default_behaviour_planner(const default_behaviour_planner&) = delete;
+				default_behaviour_planner& operator=(const default_behaviour_planner&) = delete;
 
 public:
 							default_behaviour_planner	(animation_planner *object, LPCSTR action_name);
