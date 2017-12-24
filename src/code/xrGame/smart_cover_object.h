@@ -10,7 +10,6 @@
 #define SMART_COVER_OBJECT_H_INCLUDED
 
 #include "gameobject.h"
-#include <boost/noncopyable.hpp>
 #include "script_export_space.h"
 
 namespace smart_cover {
@@ -54,6 +53,8 @@ public:
 	IC		float const&enter_min_enemy_distance		() const;
 	IC		float const&exit_min_enemy_distance			() const;
 	IC		cover const&cover							() const;
+
+	object() : CGameObject(dynamic_cast<CGameObject&>(*this)) {};
 
 public:
 	DECLARE_SCRIPT_REGISTER_FUNCTION

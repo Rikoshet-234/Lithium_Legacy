@@ -8,11 +8,9 @@
 #ifndef SMART_COVER_PLANNER_TARGET_SELECTOR_H_INCLUDED
 #define SMART_COVER_PLANNER_TARGET_SELECTOR_H_INCLUDED
 
-#include <boost/noncopyable.hpp>
 #include "smart_cover_detail.h"
 #include "action_planner_action.h"
 #include "script_callback_ex.h"
-#include "debug_make_final.hpp"
 
 namespace smart_cover {
 
@@ -30,6 +28,7 @@ private:
 	
 public:
 	typedef CScriptCallbackEx<void>					callback_type;
+	target_selector() : CActionPlannerAction<animation_planner>(dynamic_cast<inherited&>(*this)) {};
 
 private:
 	callback_type	m_script_callback;
