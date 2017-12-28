@@ -159,20 +159,28 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Mixed|Win32'">
     <ClCompile>
-      <Optimization>Full</Optimization>
-      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
-      <IntrinsicFunctions>true</IntrinsicFunctions>
-      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
-      <OmitFramePointers>false</OmitFramePointers>
-      <EnableFiberSafeOptimizations>true</EnableFiberSafeOptimizations>
+      <Optimization>Disabled</Optimization>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <IntrinsicFunctions>
+      </IntrinsicFunctions>
+      <FavorSizeOrSpeed>
+      </FavorSizeOrSpeed>
+      <OmitFramePointers>
+      </OmitFramePointers>
+      <EnableFiberSafeOptimizations>
+      </EnableFiberSafeOptimizations>
       <AdditionalIncludeDirectories>$(SolutionDir)3rd party\;$(SolutionDir)3rd party\NVAPI\Include\;$(SolutionDir)3rd party\boost\;$(SolutionDir)3rd party\luabind\;$(SolutionDir)3rd party\luajit\;$(SolutionDir)3rd party\dxsdk\Include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>MIXED;WIN32;DEBUG;_WINDOWS;_USRDLL;XRRENDER_R2_EXPORTS;_SECURE_SCL=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <StringPooling>true</StringPooling>
+      <StringPooling>
+      </StringPooling>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
-      <BufferSecurityCheck>true</BufferSecurityCheck>
-      <FunctionLevelLinking>false</FunctionLevelLinking>
+      <BufferSecurityCheck>
+      </BufferSecurityCheck>
+      <FunctionLevelLinking>
+      </FunctionLevelLinking>
       <FloatingPointModel>Fast</FloatingPointModel>
-      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <RuntimeTypeInfo>
+      </RuntimeTypeInfo>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderOutputFile>$(IntDir)$(ProjectName).pch</PrecompiledHeaderOutputFile>
       <AssemblerOutput />
@@ -195,6 +203,7 @@
       <ImportLibrary>$(SolutionDir)..\_lib_\$(Platform)\$(Configuration)\$(ProjectName).lib</ImportLibrary>
       <TargetMachine>MachineX86</TargetMachine>
       <ForceFileOutput>MultiplyDefinedSymbolOnly</ForceFileOutput>
+      <LinkTimeCodeGeneration>Default</LinkTimeCodeGeneration>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>

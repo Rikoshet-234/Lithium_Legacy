@@ -159,12 +159,15 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Mixed|Win32'">
     <ClCompile>
-      <Optimization>Full</Optimization>
-      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
-      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <Optimization>Disabled</Optimization>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <IntrinsicFunctions>
+      </IntrinsicFunctions>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
-      <OmitFramePointers>false</OmitFramePointers>
-      <EnableFiberSafeOptimizations>true</EnableFiberSafeOptimizations>
+      <OmitFramePointers>
+      </OmitFramePointers>
+      <EnableFiberSafeOptimizations>
+      </EnableFiberSafeOptimizations>
       <AdditionalIncludeDirectories>$(SolutionDir)3rd party\;$(SolutionDir)3rd party\NVAPI\Include\;$(SolutionDir)3rd party\boost\;$(SolutionDir)3rd party\luabind\;$(SolutionDir)3rd party\luajit\;$(SolutionDir)3rd party\dxsdk\Include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>MIXED;WIN32;DEBUG;_WINDOWS;_USRDLL;XRRENDER_R4_EXPORTS;_SECURE_SCL=0;USE_DX11;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
@@ -172,7 +175,8 @@
       <BufferSecurityCheck>true</BufferSecurityCheck>
       <FunctionLevelLinking>false</FunctionLevelLinking>
       <FloatingPointModel>Fast</FloatingPointModel>
-      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <RuntimeTypeInfo>
+      </RuntimeTypeInfo>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderOutputFile>$(IntDir)$(ProjectName).pch</PrecompiledHeaderOutputFile>
       <AssemblerOutput />
@@ -183,7 +187,7 @@
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>nvapi.lib;luabind.lib;luajit.lib;dxguid.lib;d3dx11.lib;D3DCompiler.lib;d3d11.lib;dxgi.lib;nvapi.lib;atimgpud_s_x86.lib;dxerr.lib;d3d10.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>nvapi.lib;luabind.lib;luajit.lib;dxguid.lib;d3dx11.lib;D3DCompiler.lib;d3d11.lib;dxgi.lib;dxerr_.lib;d3d10.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(SolutionDir)..\_lib_\$(Platform)\$(Configuration)\;$(SolutionDir)3rd party\dxsdk\Lib\$(Platform)\;$(SolutionDir)3rd party\nvapi\Lib\$(Platform)\</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <GenerateMapFile>false</GenerateMapFile>
